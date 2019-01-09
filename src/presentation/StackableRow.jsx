@@ -13,6 +13,13 @@ function StackableRow(props) {
         background-color: #f9f9f9;
         background-image: ${props.backImage ? `url('${props.backImage}')` : 'none'};
         background-repeat: repeat;
+        padding-left: 15px;
+        padding-right: 15px;
+    
+        @media (min-width: 576px) { 
+            padding-left: 0;
+            padding-right: 0;
+          }
     `
 
     const stackableRowContainer = `
@@ -23,15 +30,13 @@ function StackableRow(props) {
     let finalStyle = props.styles ? rowDefaultStyle + props.styles : rowDefaultStyle
 
     return (
-        <Container as="div" styles={finalStyle}>
-            <Container as="div" class="row">
+            <Container as="div" class="row" styles={finalStyle}>
                 <Container as="div" className="col-sm-10 offset-sm-1">
                     <Container as="div" className="row" styles={stackableRowContainer}>
                         {props.children}
                     </Container>
                 </Container>
             </Container>
-        </Container>
     )
 }
 

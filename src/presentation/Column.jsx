@@ -5,7 +5,8 @@ function Column(props) {
   let finalStyle = ``
   const defaultColumnStyle = `
         display: flex;
-        justify-content: ${props.hRight ? 'flex-end' : props.hLeft ? 'flex-start' : props.vCenter ? 'center' : 'flex-start'};
+        flex-direction: ${props.dirColumn ? 'column' : 'row'};
+        justify-content: ${props.hRight ? 'flex-end' : props.hLeft ? 'flex-start' : props.hCenter ? 'center' : 'flex-start'};
         align-items: ${props.vTop ? 'flex-end' : props.vBottom ? 'flex-start' : props.vCenter ? 'center' : 'center'};
         flex-wrap: wrap;
         padding: 0 !important;

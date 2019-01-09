@@ -5,7 +5,12 @@ function About() {
     const aboutStyle=`
         background-color: rgba(0,0,0,0.9);
         color:#fff;
-        margin-top: 600px;
+        margin-top: 500px;
+
+        
+        @media (min-width: 576px) { 
+            margin-top: 600px;
+          }
     `
     return (
         <StackableRow mediumPadded styles={aboutStyle}>

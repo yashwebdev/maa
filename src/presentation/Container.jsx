@@ -16,7 +16,7 @@ export default styled(Container)`
     ${props => props.moduleHeading && css`
       font-size: 1.5em;
       margin-bottom: 15px;
-      color: #d4d4de;
+      color: #fff;
     `}
     ${props => props.styles}
 `

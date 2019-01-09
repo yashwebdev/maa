@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin|Lobster');
+@import url('https://fonts.googleapis.com/css?family=Cabin|Lobster|Merienda+On|Raleway');
+
 
 body {
     background-color:#000;
+    overflow-x: hidden;
 }
 
 body * {
@@ -20,4 +22,12 @@ p {
     font-size: 0.9em;
     margin-bottom: 10px;
     line-height: 150%;
+}
+
+p.special {
+    font-family: 'Merienda One', cursive;
+}
+
+a {
+    font-family: Raleway;
 }

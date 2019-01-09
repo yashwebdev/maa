@@ -1,6 +1,6 @@
 import React from 'react'
 import { Column, StackableRow, Container } from '../../presentation'
-import b1 from '../../resources/pattern/dark_mosaic.png'
+import b1 from '../../resources/pattern/country-quilt-dark.png'
 import p1 from '../../resources/Berries Trail Mix.png'
 import p2 from '../../resources/Healthy Seed Mix 3.jpeg'
 import p3 from '../../resources/Roasted Cashews.png'
@@ -9,16 +9,25 @@ import p5 from '../../resources/Tea Infuser Sticks.jpeg'
 
 function MainProducts() {
     const productCardContainer = `
-    margin-left: -20px;
+    margin-left: 0px;
+    @media (min-width: 576px) { 
+        margin-left: -20px;
+      }
 `
     const productCardStyle = `
-        width: calc(25% - 20px);
+        width: 100%;
         margin: 10px;
         background-color: #fff;
         box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
         border-radius: 5px;
         transition: all 0.2s;
         cursor: pointer;
+
+        
+        @media (min-width: 576px) { 
+        width: calc(25% - 20px);
+      }
+
         &:hover {
             box-shadow: 0px 0px 20px rgb(255,255,255);
         }
@@ -46,7 +55,7 @@ function MainProducts() {
         }
     `
   return (
-      <StackableRow mediumPadded backImage={b1}>
+      <StackableRow mediumPadded backImage={b1} styles='margin-top: -1px;'>
       <Container moduleHeading as="h3">Our Products</Container>
           <Column className="col-sm-12" styles={productCardContainer}>
                 <Container as="div" styles={productCardStyle}>

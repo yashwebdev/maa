@@ -11,16 +11,44 @@ function Header() {
     right: 0;
     h3{
       color: #fff;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+
+      @media (min-width: 576px) { 
+        text-align: left;
+        margin-bottom: 0;
+      }
     }
 
+    nav {
+      display: none;
+
+      @media (min-width: 576px) { 
+        display: block;
+        text-align: right;
+      }
+    }
     nav a{
       color: #fff;
       padding: 10px 20px;
+      font-size: 0.8em;
+      display: block;
+      margin-bottom: 10px;
+      text-align: center;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       &:last-child {
         margin-right: -20px;
       }
 
+      @media (min-width: 576px) { 
+        display: inline-block;
+        margin: 0;
+      }
     }
   `
   return (
@@ -30,7 +58,7 @@ function Header() {
           </Column>
           <Column hRight className="col-sm-7">
             <Container as="nav">
-                <Container as="a">About</Container>
+                <Container as="a">About Us</Container>
                 <Container as="a">Our Products</Container>
                 <Container as="a">Find Us</Container>
                 <Container as="a">News & Testimonials</Container>
