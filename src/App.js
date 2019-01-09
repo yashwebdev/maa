@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import './App.css';
+import Header from './features/header/Header'
+import Slider from './features/slider/Slider'
+import About from './features/about/About'
+import MainProducts from './features/mainProducts/MainProducts'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <React.Fragment>
+        <Header />
+        <Slider />
+        <About />
+        <MainProducts />
+      </React.Fragment>
     );
   }
 }
