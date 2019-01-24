@@ -8,8 +8,30 @@ import p4 from '../../resources/Besan Ladoo with Front.png'
 import p5 from '../../resources/Tea Infuser Sticks.jpeg'
 
 function MainProducts() {
+    const productCardContainerOuter = `
+    margin-top: 350px;
+    background-color: #000;
+    @media (min-width: 576px) { 
+        margin-top: 600px;
+        margin-left: -20px;
+      }
+
+      h3 {
+       
+        background-color:#000; 
+    
+        margin-top: 0;
+        @media (min-width: 576px) { 
+            padding: 20px 30px; 
+            margin-top: -80px; 
+            margin-left: -20px;
+            margin-left: -30px;
+          }    
+      }
+    `
     const productCardContainer = `
     margin-left: 0px;
+
     @media (min-width: 576px) { 
         margin-left: -20px;
       }
@@ -20,16 +42,23 @@ function MainProducts() {
         background-color: #fff;
         box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
         border-radius: 5px;
-        transition: all 0.2s;
         cursor: pointer;
 
         
         @media (min-width: 576px) { 
-        width: calc(25% - 20px);
+        width: calc(50% - 20px);
       }
 
-        &:hover {
-            box-shadow: 0px 0px 20px rgb(255,255,255);
+      @media (min-width: 768px) {
+        width: calc(33.3% - 20px);
+       }
+
+       @media (min-width: 992px) {
+        width: calc(25% - 20px);
+       }
+
+        &:hover .productDesc {
+           color: #deb546;
         }
         .productImage img {
             display: block;
@@ -44,10 +73,11 @@ function MainProducts() {
             padding: 10px;
 
             a {
+                font-family: 'Oswald', sans-serif;
                 margin: 0;
                 margin-top: 10px;
                 text-align: center;
-                font-size: 1em;
+                font-size: 1.2em;
                 cursor: pointer;
                 display: block;
                 width: 100%;
@@ -55,8 +85,9 @@ function MainProducts() {
         }
     `
   return (
-      <StackableRow mediumPadded backImage={b1} styles='margin-top: -1px;'>
-      <Container moduleHeading as="h3">Our Products</Container>
+      <StackableRow mediumPadded styles={productCardContainerOuter}>
+      <Container moduleHeading as="h3">OUR PRODUCTS</Container>
+      <Container as="p" styles='color: #fff;'>MAA is committed to reviving the most endearing relationship of a mother with his child and mingling it with the gifts from Mother Nature. MAA brings to you the colours of benignity and affection added to the flavours of authentic homemade savouries</Container>
           <Column className="col-sm-12" styles={productCardContainer}>
                 <Container as="div" styles={productCardStyle}>
                     <Container className="productImage">

@@ -20,7 +20,6 @@ class App extends Component {
       <Container as="div" className="container-fluid" styles='padding: 0;'>
         <Header />
         <Slider />
-        <About />
         <MainProducts />
         <Brief />
         <VisionMission />

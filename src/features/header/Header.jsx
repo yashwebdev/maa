@@ -1,14 +1,36 @@
 import React from 'react'
 import {Column, StackableRow, Container} from '../../presentation'
+import logo from '../../resources/logo.png'
 
 function Header() {
   const headerStyle=`
-    background-color: #000;
+    background-color: rgba(0,0,0,0.9);
     z-index: 10;
     position: fixed;
     top:0;
     left: 0;
     right: 0;
+
+    img {
+      max-height: 70px;
+      margin: auto;
+      @media (min-width: 576px) { 
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+
+    img + p{
+      width: 100%;
+      text-align:center;
+      margin-top: 10px;
+      display: block;
+      @media (min-width: 576px) { 
+        display: inline;
+        width: auto;
+      }
+    }
+
     h3{
       color: #fff;
       width: 100%;
@@ -32,10 +54,17 @@ function Header() {
     nav a{
       color: #fff;
       padding: 10px 20px;
-      font-size: 0.8em;
+      font-size: 1em;
+      letter-spacing: 1px;
       display: block;
       margin-bottom: 10px;
       text-align: center;
+      cursor: pointer; 
+      border-bottom: 1px solid #deb546;
+      &.selected, &:hover {
+        background-color: #deb546;
+        color:#000;
+      }
 
       &:last-child {
         margin-bottom: 0;
@@ -54,11 +83,11 @@ function Header() {
   return (
       <StackableRow smallPadded styles={headerStyle}>
           <Column className="col-sm-5">
-            <Container as="h3">Maa</Container>
+            <Container as="img" src={logo}></Container><Container as="p" styles='color: #fff;'>Site is under construction</Container>
           </Column>
           <Column hRight className="col-sm-7">
             <Container as="nav">
-                <Container as="a">About Us</Container>
+                <Container as="a" className="selected">About Us</Container>
                 <Container as="a">Our Products</Container>
                 <Container as="a">Find Us</Container>
                 <Container as="a">News & Testimonials</Container>

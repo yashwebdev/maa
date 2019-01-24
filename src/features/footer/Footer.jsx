@@ -1,5 +1,6 @@
 import React from 'react'
 import { Column, StackableRow, Container } from '../../presentation'
+import logo from '../../resources/logo.png'
 
 function Footer() {
     const footerContainer = `
@@ -50,7 +51,7 @@ function Footer() {
     return (
         <StackableRow largePadded styles={footerContainer}>
             <Column className="col-sm-12" hCenter dirColumn>
-                <Container normalHeading as="h3" styles='color: #fff; text-align: center;'>Maa</Container>
+                <Container normalHeading as="h3" styles='color: #fff; text-align: center;'>My Authentic Appetite</Container>
                 <Container as="nav" styles={navStyle}>
                     <Container as="a" className="selected">About Us</Container>
                     <Container as="a">Our Products</Container>

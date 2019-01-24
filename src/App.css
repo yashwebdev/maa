@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin|Lobster|Merienda+On|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans|Oswald');
 
 
 body {
@@ -7,7 +7,7 @@ body {
 }
 
 body * {
-    font-family: 'Cabin', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6,p,a {
@@ -15,19 +15,15 @@ h1,h2,h3,h4,h5,h6,p,a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Lobster, cursive;
+    letter-spacing: 2px;
 }
 
 p {
-    font-size: 0.9em;
+    font-size: 1em;
     margin-bottom: 10px;
     line-height: 150%;
 }
 
-p.special {
-    font-family: 'Merienda One', cursive;
-}
-
-a {
-    font-family: Raleway;
+a, p.special, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
 }
