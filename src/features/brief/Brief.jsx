@@ -3,7 +3,7 @@ import {Column, StackableRow, Container} from '../../presentation'
 
 function Brief() {
     const briefStyle = `
-        background-color: #deb546;
+        background-color: #f9f9f9;
         padding-top: 30px;
     `
     const headingStyle = `

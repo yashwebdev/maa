@@ -3,7 +3,7 @@ import { Column, StackableRow, Container } from '../../presentation'
 
 function VisionMission() {
     const VisionMissionStyle = `
-        background-color: #deb546;
+        background-color: #f9f9f9;
         padding-top: 0px;
         margin-top: -1px;
 
@@ -29,11 +29,11 @@ function VisionMission() {
 
         p.special {
             width: 80%;
-            margin: 20px auto 0 auto;
+            margin: 40px auto 0 auto;
             font-size: 1.3em;
             text-align: center;
-            color: #fff;
-            background-color: rgba(0,0,0,0.1);
+            color: #000;
+            background-color: #57de46;
             padding: 15px;
         }
 

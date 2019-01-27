@@ -17,7 +17,7 @@ function FullWidthContainer(props) {
     const finalStyle = props.styles ? fullWidthStyle + props.styles : fullWidthStyle
 
     return (
-        <Container as="div" styles={finalStyle}>
+        <Container as="div" styles={finalStyle} {...props}>
             {props.children}
         </Container>
     )

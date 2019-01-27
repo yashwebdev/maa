@@ -9,39 +9,30 @@ import p5 from '../../resources/Tea Infuser Sticks.jpeg'
 
 function MainProducts() {
     const productCardContainerOuter = `
-    margin-top: 350px;
-    background-color: #000;
-    @media (min-width: 576px) { 
-        margin-top: 600px;
-        margin-left: -20px;
-      }
+    background-color: #f9f9f9;
 
       h3 {
-       
-        background-color:#000; 
-    
-        margin-top: 0;
+        width: max-content;
+        background-color:#f9f9f9; 
+        color: #000;
+        padding: 10px 20px 15px 20px; 
+        margin-top: -70px; 
+        margin-left: -20px
         @media (min-width: 576px) { 
-            padding: 20px 30px; 
-            margin-top: -80px; 
-            margin-left: -20px;
-            margin-left: -30px;
+           
           }    
       }
     `
     const productCardContainer = `
-    margin-left: 0px;
-
-    @media (min-width: 576px) { 
-        margin-left: -20px;
-      }
+    margin-left: -10px;
 `
     const productCardStyle = `
         width: 100%;
         margin: 10px;
         background-color: #fff;
-        box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
-        border-radius: 5px;
+        box-shadow: 0px 1px 4px rgba(222, 181, 70,0.9);
+        border: 1px solid #deb546;
+        border-bottom: none;
         cursor: pointer;
 
         
@@ -58,7 +49,7 @@ function MainProducts() {
        }
 
         &:hover .productDesc {
-           color: #deb546;
+           color: #fff;
         }
         .productImage img {
             display: block;
@@ -71,11 +62,10 @@ function MainProducts() {
 
         .productDesc {
             padding: 10px;
-
+            background-color: #deb546;
             a {
                 font-family: 'Oswald', sans-serif;
                 margin: 0;
-                margin-top: 10px;
                 text-align: center;
                 font-size: 1.2em;
                 cursor: pointer;
@@ -84,11 +74,13 @@ function MainProducts() {
             }
         }
     `
-  return (
-      <StackableRow mediumPadded styles={productCardContainerOuter}>
-      <Container moduleHeading as="h3">OUR PRODUCTS</Container>
-      <Container as="p" styles='color: #fff;'>MAA is committed to reviving the most endearing relationship of a mother with his child and mingling it with the gifts from Mother Nature. MAA brings to you the colours of benignity and affection added to the flavours of authentic homemade savouries</Container>
-          <Column className="col-sm-12" styles={productCardContainer}>
+    return (
+        <StackableRow smallPadded styles={productCardContainerOuter}>
+            <Column className="col-sm-12">
+                <Container moduleHeading as="h3">OUR PRODUCTS</Container>
+                <Container as="p" styles='color: #000; padding: 20px 0;'>MAA is committed to reviving the most endearing relationship of a mother with his child and mingling it with the gifts from Mother Nature. MAA brings to you the colours of benignity and affection added to the flavours of authentic homemade savouries</Container>
+            </Column>
+            <Column className="col-sm-12" styles={productCardContainer}>
                 <Container as="div" styles={productCardStyle}>
                     <Container className="productImage">
                         <Container as="img" src={p1}></Container>
@@ -153,9 +145,9 @@ function MainProducts() {
                         <Container as="a">Organic saffron</Container>
                     </Container>
                 </Container>
-          </Column>
-      </StackableRow>
-  )
+            </Column>
+        </StackableRow>
+    )
 }
 
 export default MainProducts
