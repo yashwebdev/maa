@@ -89,7 +89,7 @@ class Slider extends React.Component {
                 {this.renderBackgroundImages(this.state.currentImage)}
                 <Container className="row">
                     <Container className="col-sm-10 offset-sm-1">
-                        <Container as="h1">Mother's love is always transformed in food and there is no love as pure as hers</Container>
+                        <Container as="h1">{this.props.heading}</Container>
                     </Container>
                 </Container>
             </FullWidthContainer>

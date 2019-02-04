@@ -1,12 +1,17 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 import {Column, StackableRow, Container} from '../../presentation'
 import logo from '../../resources/logo.png'
 
-function Header() {
+function getClass(props, value) {
+  return props.selected.toUpperCase() === value.toUpperCase() ? 'selected' : '';
+}
+
+function Header(props) {
   const headerStyle=`
-    background-color: rgba(0,0,0,0.9);
+    background-color:  ${props.fixed ? 'rgba(0,0,0,0.9)' : '#000'};
     z-index: 10;
-    position: fixed;
+    position: ${props.fixed ? 'fixed' : 'relative'};
     top:0;
     left: 0;
     right: 0;
@@ -53,6 +58,7 @@ function Header() {
     }
     nav a{
       color: #fff;
+      text-decoration: none;
       padding: 10px 20px;
       font-size: 1em;
       letter-spacing: 1px;
@@ -81,17 +87,17 @@ function Header() {
     }
   `
   return (
-      <StackableRow smallPadded styles={headerStyle}>
+      <StackableRow smallPadded styles={headerStyle} alignItems="center">
           <Column className="col-sm-5">
             <Container as="img" src={logo}></Container><Container as="p" styles='color: #fff;'>Site is under construction</Container>
           </Column>
           <Column hRight className="col-sm-7">
             <Container as="nav">
-                <Container as="a" className="selected">About Us</Container>
-                <Container as="a">Our Products</Container>
-                <Container as="a">Find Us</Container>
-                <Container as="a">News & Testimonials</Container>
-                <Container as="a">Get in Touch</Container>
+                <Link to='/' className={getClass(props, 'about us')}>About Us</Link>   
+                <Link to='/products' className={getClass(props, 'Our Products')}>Our Products</Link>
+                <Link to='/' className={getClass(props, 'Find Us')}>Find Us</Link>
+                <Link to='/' className={getClass(props, 'News & Testimonials')}>News & Testimonials</Link>
+                <Link to='/' className={getClass(props, 'Get in Touch')}>Get in Touch</Link>           
             </Container>
           </Column>
       </StackableRow>

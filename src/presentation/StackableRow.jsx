@@ -22,9 +22,15 @@ function StackableRow(props) {
           }
     `
 
+    
     const stackableRowContainer = `
         display: flex;
-        align-items: center;
+        align-items: ${props.alignItems ? props.alignItems : 'flex-start'};
+        @media (min-width: 1200px) { 
+            max-width: 1680px;
+            margin: auto;
+          }
+    
     `
 
     let finalStyle = props.styles ? rowDefaultStyle + props.styles : rowDefaultStyle

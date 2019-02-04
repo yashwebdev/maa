@@ -33,7 +33,7 @@ function VisionMission() {
             font-size: 1.3em;
             text-align: center;
             color: #000;
-            background-color: #57de46;
+            background-color: #deb546;
             padding: 15px;
         }
 

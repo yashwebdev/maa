@@ -10,18 +10,9 @@ import p5 from '../../resources/Tea Infuser Sticks.jpeg'
 function MainProducts() {
     const productCardContainerOuter = `
     background-color: #f9f9f9;
-
-      h3 {
-        width: max-content;
-        background-color:#f9f9f9; 
-        color: #000;
-        padding: 10px 20px 15px 20px; 
-        margin-top: -70px; 
-        margin-left: -20px
-        @media (min-width: 576px) { 
-           
-          }    
-      }
+    h3 {
+    color:#000;
+    }
     `
     const productCardContainer = `
     margin-left: -10px;
@@ -78,7 +69,7 @@ function MainProducts() {
         <StackableRow smallPadded styles={productCardContainerOuter}>
             <Column className="col-sm-12">
                 <Container moduleHeading as="h3">OUR PRODUCTS</Container>
-                <Container as="p" styles='color: #000; padding: 20px 0;'>MAA is committed to reviving the most endearing relationship of a mother with his child and mingling it with the gifts from Mother Nature. MAA brings to you the colours of benignity and affection added to the flavours of authentic homemade savouries</Container>
+                <Container as="p" stackable styles='color: #000;'>MAA is committed to reviving the most endearing relationship of a mother with his child and mingling it with the gifts from Mother Nature. MAA brings to you the colours of benignity and affection added to the flavours of authentic homemade savouries</Container>
             </Column>
             <Column className="col-sm-12" styles={productCardContainer}>
                 <Container as="div" styles={productCardStyle}>
