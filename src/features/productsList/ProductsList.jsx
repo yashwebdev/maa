@@ -3,7 +3,7 @@ import { Column, StackableRow, Container } from '../../presentation'
 import productsData from '../../Products'
 import ImageSlider from '../imageSlider/ImageSlider'
 
-const renderProductHeader = (data, selectedHeader) => {
+const renderProductHeader = (data) => {
   const productHeaderStyle = `
     display: flex;
     cursor: pointer;
@@ -33,7 +33,7 @@ const renderProductHeader = (data, selectedHeader) => {
               {product.items.map(item => (
                 <Container className="col-sm-12">
                   <Container stackable styles=' background-color:#fff; display: flex;'>
-                    <Container styles='height: 280px; width: 350px; flex-shrink: 0;'>
+                    <Container styles='flex-shrink: 0; margin-right: 20px'>
                       <ImageSlider images={item.images || []} />
                     </Container>
                     <Container styles='padding: 20px 0;'>
@@ -42,7 +42,7 @@ const renderProductHeader = (data, selectedHeader) => {
                         <Container as="p" styles='margin-bottom: 15px; color:#000;'>{item.description}</Container>
                         <Container styles='display: flex;'><Container as="h4" styles='color:#1c1c1c; white-space:nowrap;'>Health benefits : </Container><Container as="p" styles='width: 95%; padding-left: 10px;'>healthy cholesterol, boosts immune system, aids in curing cancer, promotes formation of RBCs</Container></Container>
                         <Container styles='display: flex;'><Container as="h4" styles='color:#1c1c1c; white-space:nowrap;'>Key ingredients : </Container><Container as="p" styles='width: 95%; padding-left: 10px;'>Ingredient 1, Ingredient 2, Ingredient 3</Container></Container>
-                        <Container styles='display: flex;'><Container as="h4" styles='color:#1c1c1c; white-space:nowrap;'>Buy this product on : </Container><Container as="p" styles='width: 95%; padding-left: 10px;'>Flipkart, Amazon</Container></Container>
+                        <Container styles='display: flex;'><Container as="h4" styles='color:#1c1c1c; white-space:nowrap;'>Buy this product on : </Container><Container as="p" styles='width: 95%; padding-left: 10px;'>Amazon</Container></Container>
                       </Container>
                     </Container>
                   </Container>
@@ -57,9 +57,6 @@ const renderProductHeader = (data, selectedHeader) => {
 }
 
 class ProductsList extends Component {
-  state = {
-    selectedHeader: 0
-  }
   render() {
     return (
       <React.Fragment>
@@ -72,7 +69,7 @@ class ProductsList extends Component {
 
         </StackableRow>
         <StackableRow smallPadded>
-          {renderProductHeader(productsData, this.state.selectedHeader)}
+          {renderProductHeader(productsData)}
         </StackableRow>
       </React.Fragment>
     )

@@ -7,7 +7,7 @@ const productsData = [
       {
         name: "Organic Natural Honey",
         description: "The gift of nature in its purest form",
-        images: [`${require('./resources/Berries Trail Mix.png')}`]
+        images: [`${require('./resources/Berries Trail Mix.png')}`, `${require('./resources/Roasted Cashews.png')}`, `${require('./resources/Tea Infuser Sticks.jpeg')}`]
       },
       {
         name: "Organic Jamun Honey",
