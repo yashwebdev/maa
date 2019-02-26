@@ -69,7 +69,7 @@ function MainProducts() {
         <StackableRow smallPadded styles={productCardContainerOuter}>
             <Column className="col-sm-12">
                 <Container moduleHeading as="h3">OUR PRODUCTS</Container>
-                <Container as="p" stackable styles='color: #000;'>MAA is committed to reviving the most endearing relationship of a mother with his child and mingling it with the gifts from Mother Nature. MAA brings to you the colours of benignity and affection added to the flavours of authentic homemade savouries</Container>
+                <Container as="p" styles='color: #000; margin-bottom: 15px;'>MAA is committed to reviving the most endearing relationship of a mother with his child and mingling it with the gifts from Mother Nature. MAA brings to you the colours of benignity and affection added to the flavours of authentic homemade savouries</Container>
             </Column>
             <Column className="col-sm-12" styles={productCardContainer}>
                 <Container as="div" styles={productCardStyle}>
