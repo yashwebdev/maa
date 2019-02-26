@@ -22,6 +22,24 @@ const renderProductHeader = (data) => {
     margin-bottom: 25px;
   `
 
+  const productDetailContainer = `
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+
+    .imageContainer {
+      margin-right: 0
+    }
+
+    @media (min-width: 576px) { 
+      flex-direction: row;
+
+      .imageContainer {
+        margin-right: 20px
+      }
+    }
+  `
+
   return data.map((product, index) => {
     return (
       <React.Fragment>
@@ -29,11 +47,9 @@ const renderProductHeader = (data) => {
           <Container as="h3" styles={productHeaderStyle}>{product.name}</Container>
           <Container styles={productDescStyle}>
             <Container stackable as="p">{product.description}</Container>
-            <Container className="row">
               {product.items.map(item => (
-                <Container className="col-sm-12">
-                  <Container stackable styles=' background-color:#fff; display: flex;'>
-                    <Container styles='flex-shrink: 0; margin-right: 20px'>
+                  <Container styles={productDetailContainer} stackable>
+                    <Container className="imageContainer">
                       <ImageSlider images={item.images || []} />
                     </Container>
                     <Container styles='padding: 20px 0;'>
@@ -46,9 +62,7 @@ const renderProductHeader = (data) => {
                       </Container>
                     </Container>
                   </Container>
-                </Container>
               ))}
-            </Container>
           </Container>
         </Column>
       </React.Fragment>

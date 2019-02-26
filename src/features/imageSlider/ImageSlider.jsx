@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Column, StackableRow, Container } from '../../presentation'
+import { Container } from '../../presentation'
 
 export default class ImageSlider extends Component {
     constructor(props) {

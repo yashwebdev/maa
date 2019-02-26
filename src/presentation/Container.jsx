@@ -12,6 +12,10 @@ export default styled(Container)`
  
     ${props => props.stackable && css`
         margin-bottom: 20px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
     `}
 
     ${props => props.moduleHeading && css`

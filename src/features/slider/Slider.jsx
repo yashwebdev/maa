@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { FullWidthContainer, Container } from '../../presentation'
 import bg1 from '../../resources/Slider/12.JPG'
 import bg2 from '../../resources/Slider/12.jpeg'

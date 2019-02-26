@@ -8,7 +8,7 @@ function StackableRow(props) {
         width: 100vw;
         margin-top: 0;
         margin-bottom: 0;
-        margin-left: calc(-50v + 50%);
+        margin-left: calc(-50vw + 50%);
         padding: ${props.smallPadded ? '15px 0' : props.mediumPadded ? '25px 0' : props.largePadded ? '40px 0' : '0'};
         background-color: #f9f9f9;
         background-image: ${props.backImage ? `url('${props.backImage}')` : 'none'};
