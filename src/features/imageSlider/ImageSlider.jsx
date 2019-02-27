@@ -115,7 +115,7 @@ export default class ImageSlider extends Component {
         }
         `;
 
-    const { currentIndex, images } = this.state;
+    const { images } = this.state;
 
     return (
       <Container as="div">
@@ -123,20 +123,16 @@ export default class ImageSlider extends Component {
           {images.length && this.renderImages(this.state.currentIndex)}
           {images.length > 1 && (
             <Container as="div" styles={sliderControls}>
-              {currentIndex > 0 && (
-                <Container
-                  onClick={this.prevImage}
-                  as="i"
-                  className="fas fa-chevron-left"
-                />
-              )}
-              {currentIndex < images.length - 1 && (
-                <Container
-                  onClick={this.nextImage}
-                  as="i"
-                  className="fas fa-chevron-right"
-                />
-              )}
+              <Container
+                onClick={this.prevImage}
+                as="i"
+                className="fas fa-chevron-left"
+              />
+              <Container
+                onClick={this.nextImage}
+                as="i"
+                className="fas fa-chevron-right"
+              />
             </Container>
           )}
         </Container>

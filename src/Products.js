@@ -8,30 +8,31 @@ const productsData = [
       {
         name: "Organic Natural Honey",
         description: "The gift of nature in its purest form",
-        images: [`${require('./resources/Berries Trail Mix.png')}`, `${require('./resources/Roasted Cashews.png')}`, `${require('./resources/Tea Infuser Sticks.jpeg')}`]
+        images: [`${require('./resources/product/Organic Honey/1.jpeg')}`, `${require('./resources/product/Organic Honey/2.jpeg')}`, `${require('./resources/product/Organic Honey/3.jpeg')}`],
+        url: 'https://www.amazon.com'
       },
       {
         name: "Organic Jamun Honey",
         description: "The goodness of the tropical fruits blended with honey.",
-        images: [`${require('./resources/Berries Trail Mix.png')}`]
+        images: [`${require('./resources/product/Jamun Honey/1.jpeg')}`, `${require('./resources/product/Jamun Honey/2.jpeg')}`, `${require('./resources/product/Jamun Honey/3.jpeg')}`]
       },
       {
         name: "Organic Tulsi Honey",
         description:
           "Tulsi is known to be a medicinal herb itself. When blended with honey, it makes up for a warm and soothing combination.",
-        images: [`${require('./resources/Berries Trail Mix.png')}`]
+        images: [`${require('./resources/product/Tulsi Honey/1.jpeg')}`, `${require('./resources/product/Tulsi Honey/2.jpeg')}`, `${require('./resources/product/Tulsi Honey/3.jpeg')}`]
       },
       {
         name: "Organic Ginger Honey",
         description:
           "Ginger and honey make up a healthy blend and an effective medicine for cough and cold.",
-        images: [`${require('./resources/Berries Trail Mix.png')}`]
+        images: [`${require('./resources/product/Ginger Honey/1.jpeg')}`, `${require('./resources/product/Ginger Honey/2.jpeg')}`, `${require('./resources/product/Ginger Honey/3.jpeg')}`]
       },
       {
         name: "Organic Cinnamon Honey",
         description:
           "The fragrant flavour of cinnamon comes together to make a warm and tasteful mixture for winter.",
-        images: [`${require('./resources/Berries Trail Mix.png')}`]
+        images: [`${require('./resources/product/Cinnamon Honey/1.jpeg')}`, `${require('./resources/product/Cinnamon Honey/2.jpeg')}`, `${require('./resources/product/Cinnamon Honey/3.jpeg')}`]
       }
     ]
   },

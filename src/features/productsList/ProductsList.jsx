@@ -100,6 +100,24 @@ const renderMultiple = product => {
       margin-right: 0
     }
 
+    a {
+      color: #0000EE;
+      text-decoration: none;
+      outline: none;
+      font-weight: normal;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+
+      i{
+        margin-top: 5px;
+        margin-right: 5px;
+      }
+      &:hover i{
+        transform: scale(1.2);
+      }
+    }
+
     @media (min-width: 576px) { 
       flex-direction: row;
 
@@ -110,9 +128,11 @@ const renderMultiple = product => {
   `;
   return (
     <React.Fragment>
-      {product.description && <Container stackable as="p">
-        {product.description}
-      </Container>}
+      {product.description && (
+        <Container stackable as="p">
+          {product.description}
+        </Container>
+      )}
       {product.items.map(item => (
         <Container styles={productDetailContainer} stackable>
           <Container className="imageContainer">
@@ -126,15 +146,20 @@ const renderMultiple = product => {
               <Container as="p" styles="margin-bottom: 25px; color:#000;">
                 {item.description}
               </Container>
-              <Container styles="display: flex; margin-bottom: 10px;">
-                <Container as="h4" styles="color:#1c1c1c; white-space:nowrap;">
-                  Health benefits :{" "}
+              {item.healthBenefits && (
+                <Container styles="display: flex; margin-bottom: 10px;">
+                  <Container
+                    as="h4"
+                    styles="color:#1c1c1c; white-space:nowrap;"
+                  >
+                    Health benefits :{" "}
+                  </Container>
+                  <Container as="p" styles="width: 95%; padding-left: 10px;">
+                    {item.healthBenefits}
+                  </Container>
                 </Container>
-                <Container as="p" styles="width: 95%; padding-left: 10px;">
-                  healthy cholesterol, boosts immune system, aids in curing
-                  cancer, promotes formation of RBCs
-                </Container>
-              </Container>
+              )}
+              {item.ingredients && 
               <Container styles="display: flex; margin-bottom: 10px;">
                 <Container as="h4" styles="color:#1c1c1c; white-space:nowrap;">
                   Key ingredients :{" "}
@@ -143,12 +168,13 @@ const renderMultiple = product => {
                   Ingredient 1, Ingredient 2, Ingredient 3
                 </Container>
               </Container>
+              }
               <Container styles="display: flex;">
                 <Container as="h4" styles="color:#1c1c1c; white-space:nowrap;">
                   Buy this product on :{" "}
                 </Container>
                 <Container as="p" styles="width: 95%; padding-left: 10px;">
-                  Amazon
+                  <Container as="a" href={item.url}><Container as='i' className="fab fa-amazon" /> Amazon</Container>
                 </Container>
               </Container>
             </Container>
