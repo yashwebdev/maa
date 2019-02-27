@@ -40,6 +40,7 @@ export default class ImageSlider extends Component {
         <i
           onClick={() => this.setCurrentIndex(index)}
           className={selectedClass}
+          key={index + 'D'}
         />
       );
     });
@@ -69,6 +70,8 @@ export default class ImageSlider extends Component {
         justify-content: center;
         align-items: center;
         margin-top: 10px;
+        margin-bottom: 10px;
+        
         i {
             font-size: 0.4em;
             color:#c0c0c0;

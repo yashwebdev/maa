@@ -23,12 +23,12 @@ const renderProductHeader = data => {
 
   return data.map((product, index) => {
     return (
-      <React.Fragment>
+      <React.Fragment key={index + "P"}>
         <Column className="col-sm-12">
           <Container as="h3" styles={productHeaderStyle}>
             {product.name}
           </Container>
-          <Container styles={productDescStyle}>
+          <Container as="div" styles={productDescStyle}>
             {product.type === "multiple"
               ? renderMultiple(product)
               : renderSingle(product)}
@@ -48,6 +48,22 @@ const renderSingle = product => {
       margin-right: 0
     }
 
+    .descContainer {
+      padding: 20px 20px;
+
+      .descItems {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @media (min-width: 576px) { 
+        padding: 20px 0px;
+        .descItems {
+          flex-direction: row;
+        }
+      }
+    }
+
     @media (min-width: 576px) { 
       flex-direction: row;
 
@@ -58,17 +74,17 @@ const renderSingle = product => {
   `;
   return (
     <React.Fragment>
-      <Container styles={productDetailContainer}>
-        <Container className="imageContainer">
+      <Container as="div" styles={productDetailContainer}>
+        <Container as="div" className="imageContainer">
           <ImageSlider images={product.images || []} />
         </Container>
-        <Container>
+        <Container as="div" className="descContainer">
           {product.description && (
             <Container stackable as="p" styles="margin-top: 20px;">
               {product.description}
             </Container>
           )}
-          <Container styles="display: flex;">
+          <Container as="div" className="descItems">
             <Container as="h4" styles="color:#1c1c1c; white-space:nowrap;">
               Key ingredients :{" "}
             </Container>
@@ -76,12 +92,14 @@ const renderSingle = product => {
               Ingredient 1, Ingredient 2, Ingredient 3
             </Container>
           </Container>
-          <Container styles="display: flex;">
+          <Container as="div" className="descItems">
             <Container as="h4" styles="color:#1c1c1c; white-space:nowrap;">
               Buy this product on :{" "}
             </Container>
             <Container as="p" styles="width: 95%; padding-left: 10px;">
-              Amazon
+              <Container as="a" target="_blank" href={product.url}>
+                <Container as="i" className="fab fa-amazon" /> Amazon
+              </Container>
             </Container>
           </Container>
         </Container>
@@ -95,7 +113,7 @@ const renderMultiple = product => {
     display: flex;
     background-color: #fff;
     flex-direction: column;
-
+    border: 1px solid #c0c0c0;
     .imageContainer {
       margin-right: 0
     }
@@ -118,9 +136,34 @@ const renderMultiple = product => {
       }
     }
 
-    @media (min-width: 576px) { 
-      flex-direction: row;
+    .descContainer {
+      padding: 20px 20px;
 
+      .descItems {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+
+        p {
+          width: 95%; 
+          padding-left: 0px;
+        }
+      }
+
+      @media (min-width: 768px) { 
+        padding: 20px 0px;
+        .descItems {
+          flex-direction: row;
+          p {
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 768px) { 
+      flex-direction: row;
+      border: none;
       .imageContainer {
         margin-right: 20px
       }
@@ -133,48 +176,67 @@ const renderMultiple = product => {
           {product.description}
         </Container>
       )}
-      {product.items.map(item => (
-        <Container styles={productDetailContainer} stackable>
-          <Container className="imageContainer">
+      {product.items.map((item, index) => (
+        <Container
+          as="div"
+          styles={productDetailContainer}
+          stackable
+          key={index + "S"}
+        >
+          <Container as="div" className="imageContainer">
             <ImageSlider images={item.images || []} />
           </Container>
-          <Container styles="padding: 20px 0;">
+          <Container as="div" className="descContainer">
             <Container as="h3" styles="margin-bottom: 5px;">
               {item.name}
             </Container>
-            <Container styles="display: flex; flex-direction: column; justify-content: center; padding-right: 15px;">
+            <Container
+              as="div"
+              styles="display: flex; flex-direction: column; justify-content: center; padding-right: 15px;"
+            >
               <Container as="p" styles="margin-bottom: 25px; color:#000;">
                 {item.description}
               </Container>
               {item.healthBenefits && (
-                <Container styles="display: flex; margin-bottom: 10px;">
+                <Container
+                  as="div"
+                  className="descItems"
+                >
                   <Container
                     as="h4"
                     styles="color:#1c1c1c; white-space:nowrap;"
                   >
                     Health benefits :{" "}
                   </Container>
-                  <Container as="p" styles="width: 95%; padding-left: 10px;">
+                  <Container as="p">
                     {item.healthBenefits}
                   </Container>
                 </Container>
               )}
-              {item.ingredients && 
-              <Container styles="display: flex; margin-bottom: 10px;">
-                <Container as="h4" styles="color:#1c1c1c; white-space:nowrap;">
-                  Key ingredients :{" "}
+              {item.ingredients && (
+                <Container
+                  as="div"
+                  className="descItems"
+                >
+                  <Container
+                    as="h4"
+                    styles="color:#1c1c1c; white-space:nowrap;"
+                  >
+                    Key ingredients :{" "}
+                  </Container>
+                  <Container as="p" styles="">
+                    Ingredient 1, Ingredient 2, Ingredient 3
+                  </Container>
                 </Container>
-                <Container as="p" styles="width: 95%; padding-left: 10px;">
-                  Ingredient 1, Ingredient 2, Ingredient 3
-                </Container>
-              </Container>
-              }
-              <Container styles="display: flex;">
+              )}
+              <Container as="div" className="descItems">
                 <Container as="h4" styles="color:#1c1c1c; white-space:nowrap;">
                   Buy this product on :{" "}
                 </Container>
-                <Container as="p" styles="width: 95%; padding-left: 10px;">
-                  <Container as="a" href={item.url}><Container as='i' className="fab fa-amazon" /> Amazon</Container>
+                <Container as="p">
+                  <Container as="a" href={item.url} target="_blank">
+                    <Container as="i" className="fab fa-amazon" /> Amazon
+                  </Container>
                 </Container>
               </Container>
             </Container>

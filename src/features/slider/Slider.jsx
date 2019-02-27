@@ -79,7 +79,7 @@ class Slider extends React.Component {
     }
 
     renderBackgroundImages = (image) => {
-        return <Container styles={this.backgroundImageStyle(this.state.backImages[image])}></Container>
+        return <Container as="div" styles={this.backgroundImageStyle(this.state.backImages[image])}></Container>
     }
 
     render() {
