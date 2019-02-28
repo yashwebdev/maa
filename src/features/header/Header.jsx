@@ -95,9 +95,10 @@ function Header(props) {
             <Container as="nav">
                 <Link to='/' className={getClass(props, 'about us')}>About Us</Link>   
                 <Link to='/products' className={getClass(props, 'Our Products')}>Our Products</Link>
-                <Link to='/' className={getClass(props, 'Find Us')}>Find Us</Link>
+                <Link to='/products2' className={getClass(props, 'Our Products 2')}>Our Products 2</Link>
+                {/* <Link to='/' className={getClass(props, 'Find Us')}>Find Us</Link>
                 <Link to='/' className={getClass(props, 'News & Testimonials')}>News & Testimonials</Link>
-                <Link to='/' className={getClass(props, 'Get in Touch')}>Get in Touch</Link>           
+                <Link to='/' className={getClass(props, 'Get in Touch')}>Get in Touch</Link> */}
             </Container>
           </Column>
       </StackableRow>
