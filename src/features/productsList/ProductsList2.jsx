@@ -8,6 +8,9 @@ const renderProductHeader = data => {
     display: flex;
     cursor: pointer;
     padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
     width: 100%;
     background-color: #deb546;
     & > i {
@@ -113,8 +116,20 @@ const renderMultiple = product => {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+
+    .amazonButton {
+        width: 100%;
+        padding: 10px;
+        background-color: #000;
+        color:#fff;
+        margin-top: 20px;
+    }
+
     .imageContainer {
-      margin-right: 0
+      margin-right: 0;
+      background-color: #fff;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
     a {
@@ -123,12 +138,12 @@ const renderMultiple = product => {
       outline: none;
       font-weight: normal;
       cursor: pointer;
-      display: inline-flex;
+      display: flex;
+      justify-content: center;
       align-items: center;
 
       i{
-        margin-top: 5px;
-        margin-right: 5px;
+        margin:5px 5px 0 5px;
       }
       &:hover i{
         transform: scale(1.2);
@@ -149,7 +164,7 @@ const renderMultiple = product => {
         }
       }
 
-      @media (min-width: 768px) { 
+      @media (min-width: 576px) { 
         padding: 20px 0px;
         .descItems {
           flex-direction: row;
@@ -160,17 +175,22 @@ const renderMultiple = product => {
       }
     }
 
-    @media (min-width: 768px) { 
-      flex-direction: row;
-      border: none;
-      .imageContainer {
-        margin-right: 20px
-        text-align: center;
-        width: calc(33% - 20px);
-        background-color: #fff;
-        margin-bottom: 20px;
+    @media (min-width: 576px) { 
+        flex-direction: row;
+        width: calc(100% + 40px);
+        border: none;
+        .imageContainer {
+          margin-right: 20px;
+          width: calc(50% - 20px);
+          box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+        }
       }
-    }
+
+    @media (min-width: 1200px) { 
+        .imageContainer {
+          width: calc(33% - 20px);
+        }
+      }
   `;
   return (
     <React.Fragment>
@@ -186,11 +206,14 @@ const renderMultiple = product => {
       >
         {product.items.map((item, index) => (
           <Container as="div" className="imageContainer">
-            <Container as="h3" styles="margin-bottom: 10px; margin-top: 10px;">
+            <Container as="h3" styles="margin-bottom: 3px; margin-top: 10px; margin-top: 15px;">
               {item.name}
             </Container>
-            <Container as="a" styles='margin-bottom: 15px;'>Learn more </Container>
-            <ImageSlider images={item.images || []} />
+            <Container as="a" styles='margin-bottom: 10px; font-size: 0.9em;'>Learn more </Container>
+            <ImageSlider stackable images={item.images || []} enableSlider={false} />
+            <Container as="a" className="amazonButton">
+               Buy on <Container as="i" className="fab fa-amazon" /> Amazon
+              </Container>
           </Container>
         ))}
       </Container>

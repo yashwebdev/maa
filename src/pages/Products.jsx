@@ -12,7 +12,7 @@ export class Products extends Component {
   render() {
     return (
         <React.Fragment>
-            <Header fixed selected="our products"/>
+            <Header selected="our products"/>
             <Slider heading="MAA offers you a unique range of products that are purely organic and promote organic farming directly." height={500} />
             <ProductsList />
             <Footer />

@@ -119,12 +119,12 @@ export default class ImageSlider extends Component {
         `;
 
     const { images } = this.state;
-
+      const {enableSlider} = this.props;
     return (
       <Container as="div">
         <Container as="div" styles={sliderStyle}>
           {images.length && this.renderImages(this.state.currentIndex)}
-          {images.length > 1 && (
+          {enableSlider &&images.length > 1 && (
             <Container as="div" styles={sliderControls}>
               <Container
                 onClick={this.prevImage}
@@ -139,7 +139,7 @@ export default class ImageSlider extends Component {
             </Container>
           )}
         </Container>
-        {this.state.images.length > 1 && (
+        {enableSlider && this.state.images.length > 1 && (
           <Container as="div" styles={dotsControls}>
             {this.renderDots(this.state.images, this.state.currentIndex)}
           </Container>

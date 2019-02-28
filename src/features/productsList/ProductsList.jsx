@@ -7,6 +7,9 @@ const renderProductHeader = data => {
   const productHeaderStyle = `
     display: flex;
     cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 10;
     padding: 15px;
     width: 100%;
     background-color: #deb546;
