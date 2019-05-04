@@ -1,5 +1,5 @@
 import React from 'react'
-import { FullWidthContainer, Container } from '../../presentation'
+import { FullWidthContainer, StackableRow, Container } from '../../presentation'
 import bg1 from '../../resources/Slider/12.JPG'
 import bg2 from '../../resources/Slider/12.jpeg'
 
@@ -13,11 +13,10 @@ class Slider extends React.Component {
         background-color: #000;
         height: 100vh;
         position: relative;
-
+        z-index: -1;
         top:0;
         left: 0;
         right: 0;
-        z-index: -1;
         padding-top: 35vh;
     
         @media (min-width: 576px) { 
@@ -25,6 +24,7 @@ class Slider extends React.Component {
           }
     
         h1, p {
+            position: relative;
             color: #deb546;
             width: 80%;
             max-width: 500px;
@@ -36,13 +36,12 @@ class Slider extends React.Component {
             padding: 10px 30px;
             line-height: 150%;
             font-size: 1.6em;
-    
             @media (min-width: 576px) { 
                 width: 50%;
                 max-width: 600px;
                 font-size: 2em;
                 text-align: center;
-                margin-left: 0;
+                margin-left: 100px;
               }
         }
         `
@@ -86,10 +85,8 @@ class Slider extends React.Component {
         return (
             <FullWidthContainer styles={this.sliderStyle()} id="divSliderContainer">
                 {this.renderBackgroundImages(this.state.currentImage)}
-                <Container className="row">
-                    <Container className="col-sm-10 offset-sm-1">
-                        <Container as="h1">{this.props.heading}</Container>
-                    </Container>
+                <Container as="div" className="HeadingContainer">
+                    <Container as="h1">{this.props.heading}</Container>
                 </Container>
             </FullWidthContainer>
         )

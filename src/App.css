@@ -10,6 +10,10 @@ body * {
     font-family: 'Karla', sans-serif;
 }
 
+body.popup-open {
+    overflow: hidden;
+}
+
 h1,h2,h3,h4,h5,h6,p,a {
     margin: 0;
 }

@@ -2,16 +2,15 @@ import React, { Component } from "react";
 import { Column, StackableRow, Container } from "../../presentation";
 import productsData from "../../Products";
 import ImageSlider from "../imageSlider/ImageSlider";
+import Popup from '../popup/popup'
 
-const renderProductHeader = data => {
+const renderProductHeader = (data, openPopup) => {
   const productHeaderStyle = `
     display: flex;
     cursor: pointer;
     padding: 15px;
-    position: sticky;
-    top: 0;
     z-index: 10;
-    width: 100%;
+    width: calc(100% - 40px);
     background-color: #deb546;
     & > i {
       margin-top: 5px;
@@ -24,25 +23,49 @@ const renderProductHeader = data => {
     margin-bottom: 25px;
   `;
 
+  const smallContainer = `
+    width: 100%; 
+    margin-right: 20px;
+
+    @media (min-width: 576px) { 
+      width: calc(50% - 20px);
+    }
+
+    @media (min-width: 992px) { 
+      width: calc(33.3% - 20px);
+    }
+  `
+
   return data.map((product, index) => {
     return (
       <React.Fragment key={index + "P"}>
-        <Column className="col-sm-12">
+        {product.items.length > 1 && <Column>
           <Container as="h3" styles={productHeaderStyle}>
             {product.name}
           </Container>
           <Container as="div" styles={productDescStyle}>
             {product.type === "multiple"
-              ? renderMultiple(product)
+              ? renderMultiple(product, openPopup)
               : renderSingle(product)}
           </Container>
-        </Column>
+        </Column>}
+        {product.items.length === 1 && <Column styles={smallContainer}>
+          <Container as="h3" styles={productHeaderStyle}>
+            {product.name}
+          </Container>
+          <Container as="div" styles={productDescStyle}>
+            {product.type === "multiple"
+              ? renderMultiple(product, openPopup, false)
+              : renderSingle(product)}  
+          </Container>
+        </Column>}
       </React.Fragment>
     );
   });
 };
 
-const renderSingle = product => {
+const renderSingle = (product, showName = false) => {
+  console.log(product)
   const productDetailContainer = `
     display: flex;
     background-color: #fff;
@@ -50,6 +73,22 @@ const renderSingle = product => {
     .imageContainer {
       margin-right: 0
     }
+    .amazonButton {
+      display: block;
+      padding: 10px;
+      background-color: #00509b;
+      color:#fff;
+      margin-top: 20px;
+      text-align: center;
+      width: 200px;
+      cursor: pointer;
+      i {
+        margin:5px 5px 0 5px;
+      }
+      &:hover i{
+        transform: scale(1.2);
+      }
+  }
 
     .descContainer {
       padding: 20px 20px;
@@ -79,14 +118,27 @@ const renderSingle = product => {
     <React.Fragment>
       <Container as="div" styles={productDetailContainer}>
         <Container as="div" className="imageContainer">
-          <ImageSlider images={product.images || []} />
+          <ImageSlider enableSlider={true} images={product.images || []} />
         </Container>
         <Container as="div" className="descContainer">
+          {showName && <Container stackable as="h2">
+            {product.name}
+          </Container>}
           {product.description && (
             <Container stackable as="p" styles="margin-top: 20px;">
               {product.description}
             </Container>
           )}
+          {product.healthBenefits &&
+            <Container as="div" className="descItems">
+              <Container as="h4" styles="color:#1c1c1c; white-space:nowrap;">
+                Health Benefits :{" "}
+              </Container>
+              <Container as="p" styles="width: 95%; padding-left: 10px;">
+                {product.healthBenefits}
+              </Container>
+            </Container>
+          }
           <Container as="div" className="descItems">
             <Container as="h4" styles="color:#1c1c1c; white-space:nowrap;">
               Key ingredients :{" "}
@@ -95,15 +147,8 @@ const renderSingle = product => {
               Ingredient 1, Ingredient 2, Ingredient 3
             </Container>
           </Container>
-          <Container as="div" className="descItems">
-            <Container as="h4" styles="color:#1c1c1c; white-space:nowrap;">
-              Buy this product on :{" "}
-            </Container>
-            <Container as="p" styles="width: 95%; padding-left: 10px;">
-              <Container as="a" target="_blank" href={product.url}>
-                <Container as="i" className="fab fa-amazon" /> Amazon
-              </Container>
-            </Container>
+          <Container as="a" className="amazonButton">
+            Buy at <Container as="i" className="fab fa-amazon" />
           </Container>
         </Container>
       </Container>
@@ -111,18 +156,49 @@ const renderSingle = product => {
   );
 };
 
-const renderMultiple = product => {
+const renderMultiple = (product, openPopup, fullWidth = true) => {
   const productDetailContainer = `
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+  
+    .actionButtons {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 20px;
+      > * {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .learnMore {
+        background-color: #fff;
+        margin-bottom: 10px;
+      }
+
+      @media (min-width: 992px) { 
+        flex-direction: row;
+        .learnMore {
+          margin-bottom: 0;
+        }
+      }
+
+    }
 
     .amazonButton {
-        width: 100%;
         padding: 10px;
-        background-color: #000;
+        background-color: #00509b;
         color:#fff;
-        margin-top: 20px;
+
+        i {
+          margin:5px 5px 0 5px;
+        }
+
+        &:hover i{
+          transform: scale(1.2);
+        }
     }
 
     .imageContainer {
@@ -133,7 +209,7 @@ const renderMultiple = product => {
     }
 
     a {
-      color: #0000EE;
+      color: #00509b;
       text-decoration: none;
       outline: none;
       font-weight: normal;
@@ -141,13 +217,6 @@ const renderMultiple = product => {
       display: flex;
       justify-content: center;
       align-items: center;
-
-      i{
-        margin:5px 5px 0 5px;
-      }
-      &:hover i{
-        transform: scale(1.2);
-      }
     }
 
     .descContainer {
@@ -177,18 +246,18 @@ const renderMultiple = product => {
 
     @media (min-width: 576px) { 
         flex-direction: row;
-        width: calc(100% + 40px);
+        width: 100% ;
         border: none;
         .imageContainer {
-          margin-right: 20px;
-          width: calc(50% - 20px);
+          margin-right: ${fullWidth ? '20px' : '0'};
+          width: ${fullWidth ? 'calc(50% - 20px)' : '100%'};
           box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
         }
       }
 
-    @media (min-width: 1200px) { 
+    @media (min-width: 992px) { 
         .imageContainer {
-          width: calc(33% - 20px);
+          width: ${fullWidth ? 'calc(33% - 22.5px)' : '100%'};
         }
       }
   `;
@@ -206,14 +275,19 @@ const renderMultiple = product => {
       >
         {product.items.map((item, index) => (
           <Container as="div" className="imageContainer">
-            <Container as="h3" styles="margin-bottom: 3px; margin-top: 10px; margin-top: 15px;">
+            <Container as="h3" styles="margin-bottom: 20px; margin-top: 20px;">
               {item.name}
             </Container>
-            <Container as="a" styles='margin-bottom: 10px; font-size: 0.9em;'>Learn more </Container>
             <ImageSlider stackable images={item.images || []} enableSlider={false} />
-            <Container as="a" className="amazonButton">
-               Buy on <Container as="i" className="fab fa-amazon" /> Amazon
+            <Container as="div" className="actionButtons">
+              <Container as="a" className="learnMore" onClick={() => openPopup(renderSingle(item, true))}>
+                Learn more
               </Container>
+              <Container as="a" className="amazonButton">
+                Buy at <Container as="i" className="fab fa-amazon" />
+              </Container>
+            </Container>
+
           </Container>
         ))}
       </Container>
@@ -222,10 +296,23 @@ const renderMultiple = product => {
 };
 
 class ProductsList2 extends Component {
+  state = {
+    isPopupOpen: false,
+    popupData: null
+  }
+  openPopup = (data) => {
+    document.body.classList.add('popup-open')
+    this.setState({ popupData: data, isPopupOpen: true })
+  }
+
+  closePopup = () => {
+    document.body.classList.remove('popup-open')
+    this.setState({ isPopupOpen: false })
+  }
   render() {
     return (
       <React.Fragment>
-        <StackableRow mediumPadded>
+        <StackableRow mediumPadded styles='margin-top: -100px;'>
           <Column className="col-sm-12">
             <Container as="h3" firstHeading moduleHeading>
               OUR PRODUCTS
@@ -243,7 +330,8 @@ class ProductsList2 extends Component {
             </Container>
           </Column>
         </StackableRow>
-        <StackableRow>{renderProductHeader(productsData)}</StackableRow>
+        <StackableRow>{renderProductHeader(productsData, this.openPopup)}</StackableRow>
+        {this.state.isPopupOpen && <Popup closePopup={this.closePopup}>{this.state.popupData}</Popup>}
       </React.Fragment>
     );
   }
